@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/sys/module/bluetooth/parameters'
+let g:netrw_dirhist_3='/home/clement/DATA/Multimedia/Documents/COURS-ENSEEIHT/S6/Technologie_objet/Projet_long/src/model'
+let g:netrw_dirhist_2='/home/clement/DATA/Multimedia/Documents/COURS-ENSEEIHT/S6/Technologie_objet/Projet_long/CD-5/src/model'
+let g:netrw_dirhist_1='/home/clement/.config/nvim'

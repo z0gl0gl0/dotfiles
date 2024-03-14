@@ -1,0 +1,299 @@
+### Variables
+#
+# Use Mod4 for Super.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term kitty
+# lock command
+set $lock lock
+# file manager
+set $fm nnn
+
+# Your preferred application launcher
+# Note: it's recommended that you pass the final command to sway
+set $menu rofi -show run
+
+# window borders
+default_border pixel 1
+hide_edge_borders smart
+
+# Notification daemon
+exec mako
+# pulseaudio
+# redshift installed from https://github.com/giucam/redshift
+# exec ~/.local/bin/redshift
+
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+
+output * bg "~/Multimedia/Image/Saved Pictures/puipuimolcar.png" fill
+
+#
+# Example configuration:
+#
+
+output HDMI-A-1 res 1920x1080 pos 1920 0
+output eDP-1 res 1920x1080@60Hz pos 0 0
+
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+### Idle configuration
+#
+# Example configuration:
+#
+#exec idle
+
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+input type:touchpad {
+   tap enabled
+   natural_scroll enabled
+   tap_button_map lrm
+}
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+#
+
+input * xkb_layout "fr"
+input * xkb_variant "oss"
+input * xkb_numlock enable
+
+### Key bindings
+#
+# Basics:
+#
+# start a terminal
+bindsym $mod+Return exec $term
+bindsym $mod+f exec env MOZ_ENABLE_WAYLAND=1 firefox
+bindsym $mod+shift+d exec discord
+bindsym $mod+d exec discord-canary
+bindsym $mod+p exec $menu
+bindsym $mod+n exec netflix
+bindsym $mod+s exec spotify
+
+
+# kill focused window
+bindsym $mod+q kill
+
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+#
+# Moving around:
+#
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+# or use $mod+[up|down|left|right]
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# _move_ the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+# ditto, with arrow keys
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+#
+# Workspaces:
+#
+## switch to workspace
+#bindsym $mod+1 workspace 1
+#bindsym $mod+2 workspace 2
+#bindsym $mod+3 workspace 3
+#bindsym $mod+4 workspace 4
+#bindsym $mod+5 workspace 5
+#bindsym $mod+6 workspace 6
+#bindsym $mod+7 workspace 7
+#bindsym $mod+8 workspace 8
+#bindsym $mod+9 workspace 9
+#bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+#set $move "move_window"
+#mode "$move" {
+    #bindsym $mod+1 move container to workspace 1
+    #bindsym $mod+2 move container to workspace 2
+    #bindsym $mod+3 move container to workspace 3
+    #bindsym $mod+4 move container to workspace 4
+    #bindsym $mod+5 move container to workspace 5
+    #bindsym $mod+6 move container to workspace 6
+    #bindsym $mod+7 move container to workspace 7
+   #bindsym $mod+8 move container to workspace 8
+    #bindsym $mod+9 move container to workspace 9
+    #bindsym $mod+0 move container to workspace 10
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+    #bindsym Escape mode "default"
+    #bindsym Return mode "default"
+#}
+#bindsym $mod+m mode "$move"
+
+bindsym $mod+ampersand workspace 1
+bindsym $mod+eacute workspace 2
+bindsym $mod+quotedbl workspace 3
+bindsym $mod+apostrophe workspace 4
+bindsym $mod+parenleft workspace 5
+bindsym $mod+minus workspace 6
+bindsym $mod+egrave workspace 7
+bindsym $mod+underscore workspace 8
+bindsym $mod+ccedilla workspace 9
+bindsym $mod+agrave workspace 10
+
+bindsym $mod+Shift+ampersand move container to workspace 1
+bindsym $mod+Shift+eacute move container to workspace 2
+bindsym $mod+Shift+quotedbl move container to workspace 3
+bindsym $mod+Shift+apostrophe move container to workspace 4
+bindsym $mod+Shift+parenleft move container to workspace 5
+bindsym $mod+Shift+minus move container to workspace 6
+bindsym $mod+Shift+egrave move container to workspace 7
+bindsym $mod+Shift+underscore move container to workspace 8
+bindsym $mod+Shift+ccedilla move container to workspace 9
+bindsym $mod+Shift+agrave move container to workspace 10
+
+#
+# Layout stuff:
+#
+# You can "split" the current object of your focus with
+# $mod+b or $mod+v, for horizontal and vertical splits
+# respectively.
+bindsym $mod+Shift+b splith
+bindsym $mod+Shift+v splitv
+
+# Switch the current container between different layout styles
+#bindsym $mod+Shift+s layout stacking
+bindsym $mod+Shift+w layout tabbed
+bindsym $mod+Shift+s layout toggle split
+
+# Make the current focus fullscreen
+bindsym $mod+Shift+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+
+# move focus to the parent container
+bindsym $mod+Shift+a focus parent
+#
+# Scratchpad:
+#
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
+
+# Move the currently focused window to the scratchpad
+#bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+#bindsym $mod+minus scratchpad show
+#
+# Resizing containers:
+#
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym q mode "default"
+}
+bindsym $mod+r mode "resize"
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    position top
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    #status_command while date +'%Y-%m-%d %H:%M:%S'; do sleep 1; done
+    status_command i3status-rs ~/.config/sway/status.toml
+    #status_command i3blocks
+    font pango:DejaVu Sans Mono, FontAwesome 10
+
+    colors {
+        statusline #ffffff
+        background #333333
+        focused_workspace #9966cc #9966cc #ffffff
+        urgent_workspace #e52b50 #e52b50 #ffffff
+        inactive_workspace #32323200 #32323200 #5c5c5c
+    }
+#    swaybar_command waybar
+}
+
+#
+# Special keys
+#
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% 
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+
+bindsym $mod+Shift+p exec powermenu
+bindsym Print exec slurp -d | grim -g - - | tee /tmp/screenshot.png | wl-copy -t image/png
+#bindsym Print exec grimshot screen
+bindsym $mod+Shift+Print exec grimshot area
+bindsym $mod+Print exec grimshot 
+
+bindsym $mod+x exec "$(file="/tmp/click"; if test "0" = "$(cat "$file")"; then printf '1\n' > "$file"; else printf '0\n' > "$file"; fi)"
+
+#
+# SoundBoard
+#
+bindsym Alt+Ctrl+0 exec "mpv --no-video /home/clement/Multimedia/Musique/PLAYLIST_Kitty/roblox-death-sound_1.mp3"
+bindsym Alt+Ctrl+1 exec "mpv --no-video /home/clement/Multimedia/Musique/PLAYLIST_Kitty/Soundboard/Noice.mp3"
+bindsym Alt+Ctrl+2 exec "mpv --no-video /home/clement/Multimedia/Musique/PLAYLIST_Kitty/Soundboard/Mais_t_es_pas_net.mp3"
+bindsym Alt+Ctrl+3 exec "mpv --no-video /home/clement/Multimedia/Musique/PLAYLIST_Kitty/Soundboard/Turtle_cum.mp3"
+bindsym Alt+Ctrl+4 exec "mpv --no-video /home/clement/Multimedia/Musique/PLAYLIST_Kitty/Soundboard/OK_Lets_go.mp3"
+bindsym Alt+Ctrl+5 exec "mpv --no-video /home/clement/Multimedia/Musique/PLAYLIST_Kitty/Soundboard/Melenchon.mp3"
+bindsym Alt+Ctrl+6 exec "mpv --no-video /home/clement/Multimedia/Musique/PLAYLIST_Kitty/Yamete_kudasai.mp3"
+bindsym Alt+Ctrl+7 exec "mpv --no-video /home/clement/Multimedia/Musique/PLAYLIST_Kitty/Soundboard/Ta_Gueule.mp3"
+bindsym Alt+Ctrl+8 exec "mpv --no-video /home/clement/Multimedia/Musique/PLAYLIST_Kitty/Soundboard/Cest_Honteux.mp3"
+bindsym Alt+Ctrl+9 exec "mpv --no-video /home/clement/Multimedia/Musique/PLAYLIST_Kitty/Soundboard/Mario_non.mp3"
